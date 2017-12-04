@@ -1,0 +1,23 @@
+.table {
+    border-radius: 5px;
+    width: 90%;
+    margin: 0px auto;
+    float: none;
+}
+
+.header{
+	text-align: center;
+	padding-Bottom:30px;
+	
+}
+
+.myBtn{
+	padding : 15px 30px 14px 30px;
+    margin  : 5px auto;
+    display : block;
+    width   : 100px;
+}
+
+span.align-right{
+	text-align:right;
+}

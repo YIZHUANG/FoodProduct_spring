@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+   <head>
+      <title>productlist</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+      <style type="text/css">
+         span{
+         width:90%;
+         display:inline-block;
+         }
+         span.align-center{
+         text-align:center;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="col-md-4">
+         <h1>SpringBoot</h1>
+      </div>
+      <div class="col-md-4">
+         <h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+      </div>
+      <div class="col-md-4" style="padding:20px 0">
+         <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" class="btn btn-danger"/>
+         </form>
+      </div>
+      <table class="table table-striped table-hover table-responsive">
+         <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Calories</th>
+            <th>Location</th>
+            <th>Image</th>
+            <th>Market</th>
+            <th>Type</th>
+            <th></th>
+            <th></th>
+            <th sec:authorize="hasRole('ADMIN')"> </th>
+         </tr>
+         <tr th:each="meal:${food}">
+            <td th:text="${meal.name}"></td>
+            <td th:text="${meal.price} +' ' +euro"></td>
+            <td th:text="${meal.description}"></td>
+            <td th:text="${meal.calories}"></td>
+            <td th:text="${meal.marketlocation}"></td>
+            <td><img th:src="${meal.imgURL}" alt="" style="width:100px; height:auto;"/></td>
+            <td th:text="${meal.market.marketName}"></td>
+            <td th:text="${meal.type.typeName}"></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${meal.id})}" class="btn btn-danger">Delete</a></td>
+            <td><a th:href="@{/edit/{id}(id=${meal.id})}" class="btn btn-danger">Edit</a></td>
+         </tr>
+      </table>
+      <span class="align-center">
+      <a href="/Add"  class="btn btn-success">AddProduct</a>
+      </span>
+   </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+   <head>
+      <title>ProductList</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+      <link type="text/css" rel="stylesheet" th:href="@{css/style.css}" />
+      <style type="text/css">
+         span{
+         width:90%;
+         display:inline-block;
+         }
+         span.align-center{
+         text-align:center;
+         }
+         .saveBtn{
+         background-color: #4CAF50;
+         border: none;
+         color: white;
+         padding: 16px 32px;
+         text-decoration: none;
+         margin: 4px 2px;
+         cursor: pointer;
+         }
+         .header{
+         text-align:center;
+         }
+         input{
+         width: 100%;
+         padding: 12px 20px;
+         margin: 8px 0;
+         box-sizing: border-box;
+         border: none;
+         background-color: #3CBC8D;
+         color: white;
+         }
+         select{
+         background: transparent;
+         background-color: #3b8ec2;
+         border: none;
+         font-size: 14px;
+         height: 29px;
+         padding: 5px; /* If you add too much padding here, the options won't show in IE */
+         width: 268px;}
+      </style>
+   </head>
+   <body>
+      <h1 class="header">editProduct</h1>
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+         <form th:object="${food}" th:action="@{../save}" action="#" method="post">
+            <label for="Nname" class="form-control">Name</label>
+            <input id="Nname" type="text" th:field="*{name}" />
+            <label for="Pprice" class="form-control">Price</label>
+            <input type="text" id="Pprice" th:field="*{price}"></input>
+            <label for="Ddescription" class="form-control">Description</label>
+            <input type="text" id="Ddescription" th:field="*{description}"></input>
+            <label for="Ccalories" class="form-control">Calories</label>
+            <input id="Ccalories" type="text" th:field="*{calories}"></input>
+            <label for="Llocation" class="form-control">Location</label>
+            <input id="Llocation" type="text" th:field="*{marketlocation}"></input>
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="marketlist" class="form-control">Market</label>
+            <select id="marketlist" th:field="*{market}" class="form-control">
+               <option th:each="market:${markets}" th:value="${market.marketId}" th:text="${market.marketName}">
+               </option>
+            </select>
+            <label for="typelist" class="form-control">ProductType</label>
+            <select id="typelist" th:field="*{type}" class="form-control">
+               <option th:each="type:${types}" th:value="${type.typeId}" th:text="${type.typeName}">
+               </option>
+            </select>
+            <span class="align-center">
+            <input type="submit" class="saveBtn" value="Save" />
+            </span>
+         </form>
+      </div>
+      <div class="col-md-4"></div>
+   </body>
+</html>

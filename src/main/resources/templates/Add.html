@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title>ProductList</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+      <link type="text/css" rel="stylesheet" th:href="@{css/style.css}" />
+   </head>
+   <body>
+      <h1 class="header">Add Product</h1>
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+         <form th:object="${food}" th:action="@{save}" action="#" method="post">
+            <label for="Nname">Name</label>
+            <input id="Nname" type="text" class="form-control" th:field="*{name}" />
+            <label for="Pprice">Price</label>
+            <input type="text" id="Pprice" class="form-control" th:field="*{price}"></input>
+            <label for="Ddescription">Description</label>
+            <input type="text" id="Ddescription" th:field="*{description}" class="form-control"></input>
+            <label for="Ccalories">Calories</label>
+            <input id="Ccalories" type="text" th:field="*{calories}" class="form-control"></input>
+            <label for="Llocation">Location</label>
+            <input id="Llocation" type="text" th:field="*{marketlocation}" class="form-control"></input>
+            <label for="Image">ImageUrl</label>
+            <input id="Image" type="text" th:field="*{imgURL}" class="form-control"></input>
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <label for="marketlist">Market</label>
+            <select id="marketlist" th:field="*{market}" class="form-control">
+               <option th:each="market:${markets}" th:value="${market.marketId}" th:text="${market.marketName}">
+               </option>
+            </select>
+            <label for="typelist">ProductType</label>
+            <select id="typelist" th:field="*{type}" class="form-control">
+               <option th:each="type:${types}" th:value="${type.typeId}" th:text="${type.typeName}">
+               </option>
+            </select>
+            <input type="submit" class="btn btn-danger myBtn" value="Save"></input>
+         </form>
+      </div>
+      <div class="col-md-4">
+      </div>
+   </body>
+</html>
