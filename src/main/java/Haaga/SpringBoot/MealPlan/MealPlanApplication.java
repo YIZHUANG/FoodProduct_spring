@@ -40,6 +40,8 @@ public class MealPlanApplication {
 				
 				repository.save(new FoodList("Minced beef",3.5,"finnish beef low fat",2000,"Hakaniemi","https://groceries.morrisons.com/productImages/302/302002011_0_640x640.jpg?identifier=704bfc91c0da55d0fb75a8557cc19a8a",mrepository.findBymarketName("Kmarket").get(0),trepository.findBytypeName("Protein").get(0)));
 				repository.save(new FoodList("Salad",2.5,"organic with carrot and kale",600,"pasila","https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/144/14/494706637.jpg",mrepository.findBymarketName("Smarket").get(0),trepository.findBytypeName("Veggie").get(0)));
+				repository.save(new FoodList("Minced lamb",4,"English at its best",2000,"Hakaniemi","http://www.godfreys.co/ekmps/shops/fgodfrey/images/free-range-lean-lamb-mince-110-p.jpg",mrepository.findBymarketName("Kmarket").get(0),trepository.findBytypeName("Protein").get(0)));
+				repository.save(new FoodList("Salmon",8,"it is smoked",2000,"Rautatietory","http://www.seriouseats.com/recipes/assets_c/2016/08/20160826-sous-vide-salmon-46-thumb-1500xauto-433927.jpg",mrepository.findBymarketName("Kmarket").get(0),trepository.findBytypeName("Protein").get(0)));
 				User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
 				User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
 				urepository.save(user1);

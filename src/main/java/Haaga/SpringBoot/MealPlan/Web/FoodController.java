@@ -65,19 +65,12 @@ public class FoodController {
    }
 
    @RequestMapping(value="/products")
-   public @ResponseBody List<FoodList> studentListRest() {	
+   public @ResponseBody List<FoodList> productListRest() {	
        return (List<FoodList>) repository.findAll();
    }    
-
-	// RESTful service to get student by id
+   
    @RequestMapping(value="/products/{id}", method = RequestMethod.GET)
    public @ResponseBody FoodList findFoodRest(@PathVariable("id") Long foodId) {	
    	return repository.findOne(foodId);
    }       
-   
-   
-   
-  
-   
-   
 }

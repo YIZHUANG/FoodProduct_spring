@@ -10,11 +10,11 @@ public class signUp {
 	    private String username = "";
 
 	    @NotEmpty
-	    @Size(min=7, max=30)
+	    @Size(min=4, max=20)
 	    private String password = "";
 
 	    @NotEmpty
-	    @Size(min=7, max=30)
+	    @Size(min=4, max=20)
 	    private String passwordCheck = "";
 
 	    @NotEmpty
@@ -50,6 +50,12 @@ public class signUp {
 
 		public void setRole(String role) {
 			this.role = role;
+		}
+
+		@Override
+		public String toString() {
+			return "signUp [username=" + username + ", password=" + password + ", passwordCheck=" + passwordCheck
+					+ ", role=" + role + "]";
 		}
 	    
 }

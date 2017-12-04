@@ -20,7 +20,6 @@ import javax.validation.Valid;
 public class UserController {
 	@Autowired
     private UserRepository repository; 
-	
     @RequestMapping(value = "signup")
     public String addStudent(Model model){
     	model.addAttribute("signupform", new signUp());
@@ -39,7 +38,7 @@ public class UserController {
 		    	newUser.setPasswordHash(hashPwd);
 		    	newUser.setUsername(signupForm.getUsername());
 		    	newUser.setRole("USER");
-		    	if (repository.findByUsername(signupForm.getUsername()) == null) { // Check if user exists
+		    	if (repository.findByUsername(signupForm.getUsername()) == null) {
 		    		repository.save(newUser);
 		    	}
 		    	else {
