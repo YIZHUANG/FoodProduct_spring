@@ -2,10 +2,10 @@
 Just for fun.
 Build with spring as back-end, reactJs and thymeleaf as frontend, mongodb as the database.
 
-1.Install npm packages
+1.
 npm install
 
-2.Run webpack
+2.Run
 webpack
 
 3.Run the application
