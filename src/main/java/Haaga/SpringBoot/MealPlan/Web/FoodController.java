@@ -30,6 +30,10 @@ public class FoodController {
 	    public String login() {	
 	        return "login";
 	    }
+	 @RequestMapping(value="/receipe")
+	    public String receipe() {	
+	        return "react";
+	    }
 	 
     @RequestMapping(value="/productlist")
     public String foodList(Model model) {	
