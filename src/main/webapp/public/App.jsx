@@ -57,13 +57,14 @@ class Search extends React.Component {
         this.setState({
           searchResult: res.data
         });
+        console.log(res);
       });
   }
 
   renderResult() {
     const list = this.state.searchResult.map(
       foods =>
-      <div key={foods._id}>
+      <div key={foods.name}>
         <SearchResult foods={foods}/>
       </div>
     );
@@ -72,10 +73,13 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" style={styles}>
         <div className="row">
         <div className="col-sm-4"></div>
       <div className="col-sm-4">
+        <div className="page-header">
+          <h1>Find receipes</h1>
+        </div>
         <div className="form-group">
           <label for="type">Type of meal</label>
           <select className="form-group" id="type" onChange={this.onChangeType.bind(this)}>
@@ -83,26 +87,34 @@ class Search extends React.Component {
             <option value="non-vegan">Non-vegan</option>
             <option value="vegan">Vegan</option>
           </select>
+        </div>
+          <div className="form-group">
           <label for="profile">flavour profile</label>
           <select className="form-group" id="profile" onChange={this.onChangeProfile.bind(this)}>
             <option value="-1" disabled>--</option>
             <option value="savory">Savory</option>
             <option value="sweet">Sweet</option>
           </select>
+        </div>
+          <div className="form-group">
           <label for="cost">Cost</label>
           <select className="form-group" id="cost" onChange={this.onChangeCost.bind(this)}>
             <option value="-1" disabled>--</option>
             <option value="15">5 to 15 euro</option>
             <option value="25">15 to 25 euro</option>
           </select>
-
+        </div>
+        </div>
+        </div>
+        <div className="row">
+      <div className="col-sm-4"></div>
+      <div className="col-sm-4">
         <button onClick={this.submitForm.bind(this)} className="btn btn-pimary"> Search now</button>
-        </div>
-        <div>
-          {this.renderResult()}
-        </div>
       </div>
       <div className="col-sm-4"></div>
+    </div>
+    <div>
+      {this.renderResult()}
     </div>
   </div>
     )
@@ -115,14 +127,19 @@ class SearchResult extends React.Component {
   }
   render() {
     return (
-      <div>
-        <ul className="list-group">
-          <li className="list-group-item"><img src={this.props.foods.imageUrl} width="100px" height="100px" alt="whatever"></img></li>
-          <li className="list-group-item">Name : {this.props.foods.name}</li>
-          <li className="list-group-item">Total cooking time : {this.props.foods.totalTime}</li>
-          <li className="list-group-item"> Calories: {this.props.foods.calories}</li>
-        </ul>
-        <br></br>
+
+      <div className="row">
+        <div className="col-sm-4"></div>
+        <div className="col-sm-4" style={resultStyle}>
+          <ul className="list-group">
+            <li className="list-group-item"><img src={this.props.foods.imageUrl} width="100px" height="100px" alt="whatever"></img></li>
+            <li className="list-group-item">Name : {this.props.foods.name}</li>
+            <li className="list-group-item">Total cooking time : {this.props.foods.totalTime}</li>
+            <li className="list-group-item"> Calories: {this.props.foods.calories}</li>
+            </ul>
+            <br></br>
+        </div>
+        <div className="col-sm-4"></div>
       </div>
     )
   }
@@ -137,6 +154,12 @@ const Api = {
   }
 };
 
+var styles={
+  paddingTop:50
+}
 
+var resultStyle={
+  paddingTop:15
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));

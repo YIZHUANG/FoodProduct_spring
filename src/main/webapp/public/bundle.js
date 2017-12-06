@@ -10374,6 +10374,7 @@ var Search = function (_React$Component2) {
         _this3.setState({
           searchResult: res.data
         });
+        console.log(res);
       });
     }
   }, {
@@ -10382,7 +10383,7 @@ var Search = function (_React$Component2) {
       var list = this.state.searchResult.map(function (foods) {
         return _react2.default.createElement(
           'div',
-          { key: foods._id },
+          { key: foods.name },
           _react2.default.createElement(SearchResult, { foods: foods })
         );
       });
@@ -10393,7 +10394,7 @@ var Search = function (_React$Component2) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'container-fluid' },
+        { className: 'container-fluid', style: styles },
         _react2.default.createElement(
           'div',
           { className: 'row' },
@@ -10401,6 +10402,15 @@ var Search = function (_React$Component2) {
           _react2.default.createElement(
             'div',
             { className: 'col-sm-4' },
+            _react2.default.createElement(
+              'div',
+              { className: 'page-header' },
+              _react2.default.createElement(
+                'h1',
+                null,
+                'Find receipes'
+              )
+            ),
             _react2.default.createElement(
               'div',
               { className: 'form-group' },
@@ -10427,7 +10437,11 @@ var Search = function (_React$Component2) {
                   { value: 'vegan' },
                   'Vegan'
                 )
-              ),
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group' },
               _react2.default.createElement(
                 'label',
                 { 'for': 'profile' },
@@ -10451,7 +10465,11 @@ var Search = function (_React$Component2) {
                   { value: 'sweet' },
                   'Sweet'
                 )
-              ),
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group' },
               _react2.default.createElement(
                 'label',
                 { 'for': 'cost' },
@@ -10475,20 +10493,29 @@ var Search = function (_React$Component2) {
                   { value: '25' },
                   '15 to 25 euro'
                 )
-              ),
-              _react2.default.createElement(
-                'button',
-                { onClick: this.submitForm.bind(this), className: 'btn btn-pimary' },
-                ' Search now'
               )
-            ),
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
+          _react2.default.createElement('div', { className: 'col-sm-4' }),
+          _react2.default.createElement(
+            'div',
+            { className: 'col-sm-4' },
             _react2.default.createElement(
-              'div',
-              null,
-              this.renderResult()
+              'button',
+              { onClick: this.submitForm.bind(this), className: 'btn btn-pimary' },
+              ' Search now'
             )
           ),
           _react2.default.createElement('div', { className: 'col-sm-4' })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          this.renderResult()
         )
       );
     }
@@ -10511,35 +10538,41 @@ var SearchResult = function (_React$Component3) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'row' },
+        _react2.default.createElement('div', { className: 'col-sm-4' }),
         _react2.default.createElement(
-          'ul',
-          { className: 'list-group' },
+          'div',
+          { className: 'col-sm-4', style: resultStyle },
           _react2.default.createElement(
-            'li',
-            { className: 'list-group-item' },
-            _react2.default.createElement('img', { src: this.props.foods.imageUrl, width: '100px', height: '100px', alt: 'whatever' })
+            'ul',
+            { className: 'list-group' },
+            _react2.default.createElement(
+              'li',
+              { className: 'list-group-item' },
+              _react2.default.createElement('img', { src: this.props.foods.imageUrl, width: '100px', height: '100px', alt: 'whatever' })
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: 'list-group-item' },
+              'Name : ',
+              this.props.foods.name
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: 'list-group-item' },
+              'Total cooking time : ',
+              this.props.foods.totalTime
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: 'list-group-item' },
+              ' Calories: ',
+              this.props.foods.calories
+            )
           ),
-          _react2.default.createElement(
-            'li',
-            { className: 'list-group-item' },
-            'Name : ',
-            this.props.foods.name
-          ),
-          _react2.default.createElement(
-            'li',
-            { className: 'list-group-item' },
-            'Total cooking time : ',
-            this.props.foods.totalTime
-          ),
-          _react2.default.createElement(
-            'li',
-            { className: 'list-group-item' },
-            ' Calories: ',
-            this.props.foods.calories
-          )
+          _react2.default.createElement('br', null)
         ),
-        _react2.default.createElement('br', null)
+        _react2.default.createElement('div', { className: 'col-sm-4' })
       );
     }
   }]);
@@ -10553,6 +10586,14 @@ var Api = {
     var queryURL = "https://api.mlab.com/api/1/databases/recipe/collections/recipe?apiKey=" + authKey + "&q={'type':" + JSON.stringify(type) + "," + "'flavourProfile':" + JSON.stringify(profile) + "," + "'cost':" + JSON.stringify(cost) + "}";
     return _axios2.default.get(queryURL);
   }
+};
+
+var styles = {
+  paddingTop: 50
+};
+
+var resultStyle = {
+  paddingTop: 15
 };
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
