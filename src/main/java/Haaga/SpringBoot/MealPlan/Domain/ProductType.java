@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="ProductType")
 public class ProductType {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)

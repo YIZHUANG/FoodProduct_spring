@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,13 +22,13 @@ public class FoodList {
     private Long Id;
     private String name;
     private double price;
-   private String description;
-   private double calories;
-   private String marketlocation;
-   private String imgURL;
-   @ManyToOne
-   @JsonIgnore
-   @JoinColumn(name="marketId")
+    private String description;
+    private double calories;
+    private String marketlocation;
+    private String imgURL;
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name="marketId")
     private MarketList market;
    
    @ManyToOne

@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface MarketRepository extends CrudRepository<MarketList,Long>{
-List<MarketList> findBymarketName(String marketName);
+List<MarketList> findByMarketName(String marketName);
 }
