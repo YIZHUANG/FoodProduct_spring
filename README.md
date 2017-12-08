@@ -1,23 +1,32 @@
 
-Just for fun.
-Build with spring as back-end, reactJs and thymeleaf as frontend, mongodb as the database.
+Build with Java , reactJs and Postgresql and mongodb.
 
-1.
+Add your own postgresql / MariaDB / mySql database in the application.properties files.
+
+How to Launch:
+
+1.Install npm packages
+
 npm install
 
-2.Run
+2.Run webpack
+
 webpack
 
 3.Run the application
+
 mvnw spring-boot:run
 
+Login by using:
+
 UserName：ADMIN
+
 Password: admin
+
 Or you can sign up your own
 
 Api address:
 http://localhost:8080/products
-http://localhost:8080/products/1
 
 ![alt text](https://image.ibb.co/jJ6CfG/20171206214540.png)
 
