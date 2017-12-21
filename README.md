@@ -3,17 +3,18 @@ Build with Java , reactJs and Postgresql and mongodb.
 
 Add your own postgresql / MariaDB / mySql database in the application.properties files.
 
-How to Launch:
 
-1.Install npm packages
+## Install project dependencies
+```
+$ npm install
+```
 
-npm install
-
-2.Run webpack
-
+## Run webpack
+```
 webpack
+```
 
-3.Run the application
+## Run the app:
 
 mvnw spring-boot:run
 
